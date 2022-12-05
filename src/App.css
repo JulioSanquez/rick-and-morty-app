@@ -20,7 +20,7 @@ li{
 }
 
 .portada{
-  background-image: url(./portada.jpeg);
+  background-image: url("portada.jpeg");
   background-attachment: fixed;
   background-position: center; 
   background-repeat: no-repeat;
@@ -45,7 +45,7 @@ li{
 }
 
 .portada2{
-  background-image: url(./intro.gif);
+  background-image: url("intro.gif");
   background-attachment: fixed;
   background-position: center; 
   background-repeat: no-repeat;
