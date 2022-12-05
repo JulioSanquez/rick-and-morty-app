@@ -19,6 +19,22 @@ function App() {
   setTimeout(()=> setLoad(true), 6000)
   setTimeout(()=> setLoad2(true), 3850)
 
+  const port1 = {
+    backgroundImage: "url(./portada.jpeg)",
+    backgroundAttachment: "fixed",
+    backgroundPosition: "center",
+    backgroundRepeat: "norepeat",
+    backgroundSize: "cover",
+  }
+
+  const port2 = {
+    backgroundImage: "url(./intro.gif)",
+    backgroundAttachment: "fixed",
+    backgroundPosition: "center",
+    backgroundRepeat: "norepeat",
+    backgroundSize: "cover",
+  }
+
   const getDataDimension = (idDimension) => {
     
     if(!idDimension ) return 
@@ -69,9 +85,9 @@ function App() {
 
   return (
     <>
-      <div className={ `portada2 ${load2 && "none"}` }>
+      <div className={ `portada2 ${load2 && "none"}`} style={port2}>
       </div>
-      <div className={ `portada ${load && "none"}` }>
+      <div className={ `portada ${load && "none"}`} style={port1}>
         <img src="portal3.png" alt="" />
       </div>
       <div className="App">
