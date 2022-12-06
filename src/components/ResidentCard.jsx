@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
 
-const ResidentCard = ({ urlResident }) => {
+const ResidentCard = ({ urlResident, setModalResident }) => {
   const [resident, setResident] = useState();
   
   useEffect(() => {
@@ -13,23 +13,25 @@ const ResidentCard = ({ urlResident }) => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleClick = (e) => console.log(resident)
+
   return (
-    <article className="resident-card">
+    <article className="resident-card"  onClick={handleClick}  data-name={resident?.name} >
       {
         resident ?  <>
-          <header className="resident-card_header">
-            <img src={resident.image} alt={resident.name} />
-            <div className="resident-card_status">
-              <div className={`circle ${resident.status.toLowerCase()}`}></div>
-              <span>{resident.status}</span>
+          <header className="resident-card_header"  >
+            <img src={resident.image} alt={resident.name}  />
+            <div className="resident-card_status"   >
+              <div className={`circle ${resident.status.toLowerCase()}`}   ></div>
+              <span   >{resident.status}</span>
             </div>
           </header>
-          <section className="resident-card_body">
-            <h2>{resident.name}</h2>
-            <ul>
-              <li> <span> Species: {resident.species} </span> </li>
-              <li> <span> Origin: {resident.origin.name} </span> </li>
-              <li> <span> Episodes where appear {resident.episode.length} </span> </li>
+          <section className="resident-card_body"   >
+            <h2  >{resident.name}</h2>
+            <ul   >
+              <li   > <span  > Species: {resident.species} </span> </li>
+              <li   > <span  > Origin: {resident.origin.name} </span> </li>
+              <li   > <span  > Episodes where appear {resident.episode.length} </span> </li>
             </ul>
           </section>
         </> : <Loader />

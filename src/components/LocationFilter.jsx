@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-const LocationFilter = ({locationName, getNewLocation, cssProps}) => {
+const LocationFilter = ({locationName, getNewLocation}) => {
   const [locationOptions, setLocationOptions] = useState()
 
   useEffect(() => {
@@ -17,7 +17,11 @@ const LocationFilter = ({locationName, getNewLocation, cssProps}) => {
     <ul className='navbar-filter'>
       {
         locationOptions?.map( locOpt => 
-          locationName !== locOpt.name && <li onClick={() => getNewLocation(locOpt.url,locOpt.name)} key={locOpt.url}>{locOpt.name}</li>)
+          locationName !== locOpt.name && <li 
+            onClick={() => getNewLocation(locOpt.url,locOpt.name)} 
+            key={locOpt.url} >
+              {locOpt.name}
+          </li>)
       }
     </ul>
   )

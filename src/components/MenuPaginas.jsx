@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
+import getPagesCharacter from '../../utils/getPagesCharacter'
 
 const MenuPaginas = ({location}) => {
-  const [currentPage, setCurrentPage] = useState(0)
-  // console.log(location?.residents.length)
+  const [pages, setPages] = useState(  )
+  const [currentPage, setCurrentPage] = useState()
+
+
   return (
     <nav>
       <ul>
       { currentPage ?? <div>First...</div>}
       {
-
+        pages?.map( (page, i) => <li> {i} </li> )
       }
       {currentPage < (location?.residents.length/3) && <div>...Last</div>}
       </ul>

@@ -3,10 +3,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
 }
 
 html {
   background-color: #05292e;
+  background-color: linear-gradient(#05292e 0%, #0d6570 50%, #178b9b) 100%;
   overflow-x: hidden;
 }
 
@@ -115,15 +117,20 @@ li{
   padding: 0.25rem 0;
   color: #05292e;
   background-color: white;
-  position: absolute;
-  top: 50px;
   cursor: pointer;
   font-size: 1.25rem;
+  position: absolute;
+  top: 40px;
+  right: 8%;
+  width: 29%;
+  max-height: 85vh;
+  overflow-y: scroll;
+  z-index: -1;
 }
 
-
 .navbar-filter li{
-  padding: 0.25rem 1rem;
+  padding-top: .5rem ;
+  padding-left: 1rem;
 }
 
 .navbar-filter li:hover {
@@ -147,18 +154,24 @@ li{
   border-radius: 0 25px 25px 0;
 }
 
+.navbar-button:hover{
+  background-color: #dddddd44;
+  border-radius: 0 25px 25px 0;
+}
+
 
 .location-residents {
-  padding: 2rem;
+  padding: 1rem 15vw;
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
   grid-auto-rows: max-content;
-  grid-template-columns: repeat(auto-fill, minmax( min(90%, 16rem), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax( min(90%, 15rem), 1fr));
 }
 
 .resident-card {
   background-color: #062226;
   color: white;
+  padding: .5rem;
 }
 
 .resident-card_header {
@@ -168,13 +181,20 @@ li{
 .resident-card_status{
   font-size: clamp(25%, 2rem, 100%);
   position: absolute;
-  top: 20px; 
+  top: 0; 
+  width: 100%;
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   padding: 5px 10px;
-  border-radius: 0 20px 20px 0;
-  background-color: #062226;
+  background-color: #06222688;
+}
+
+.resident-card:hover {
+  background-color: #075561;
+  color: white;
+  cursor: pointer;
 }
 
 .circle {
@@ -274,6 +294,12 @@ li{
   }
 }
 
+.modal{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
 .scroll-up{
   position: fixed;
   bottom: 50px;
@@ -286,9 +312,9 @@ li{
 }
 
 .scroll-up:hover{
-  background-color: #065e11;
+  background-color: #075561;
   color: white;
-  
+  cursor: pointer;
 }
 
 .refresh{
@@ -303,9 +329,9 @@ li{
 }
 
 .refresh:hover{
-  background-color: #065e11;
+  background-color: #075561;
   color: white;
-  
+  cursor: pointer;
 }
 
 @media (max-width: 700px){
@@ -327,5 +353,18 @@ li{
   .navbar-search{
     width: 80%;
     padding-bottom: 1rem;
+  }
+
+  .navbar-filter{
+    right: 26.3%;
+    width: 60%;
+    max-height: 75vh;
+    z-index: -1;
+  }
+
+  .location-residents {
+    padding: 1rem 4vw;
+    display: grid;
+    gap: 1rem;
   }
 }

@@ -7,10 +7,12 @@ import ResidentList from "./components/ResidentList";
 import LocationInfo from "./components/LocationInfo";
 import ErrorMessage from "./components/ErrorMessage";
 import MenuPaginas from "./components/MenuPaginas";
+import ModalResident from "./components/ModalResident";
 
 function App() {
   const [location, setLocation] = useState();
   const [locationName, setLocationName] = useState()
+  const [modalResident, setModalResident] = useState(false)
   const [showError, setShowError] = useState(false)
   const [load, setLoad] = useState(false)
   const [load2, setLoad2] = useState(false)
@@ -37,7 +39,11 @@ function App() {
 
   const getDataDimension = (idDimension) => {
     
-    if(!idDimension ) return 
+    if(!idDimension ) {
+      setShowError(true)
+      setTimeout(()=>setShowError(false), 6000)
+      return
+    }
     const URL = `https://rickandmortyapi.com/api/location/${idDimension}`;
     axios.get(URL)
       .then((res) => setLocation(res.data))
@@ -80,7 +86,7 @@ function App() {
 
   const handleRefresh = () => {
     setChange(!change)
-    setLocationName()
+    setLocationName("")
   }
 
   return (
@@ -98,9 +104,12 @@ function App() {
           getNewLocation={getNewLocation}  
         />
         <LocationInfo location={location} />
-        <ResidentList location={location} />
+        <ResidentList location={location} setModalResident={setModalResident} />
         {
-          showError && <ErrorMessage setShowError={setShowError} />         
+          modalResident && <ModalResident modalResident={modalResident} />
+        }
+        {
+          showError && <ErrorMessage setShowError={ setShowError } />         
         }
 
         { load &&<>

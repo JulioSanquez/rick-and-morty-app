@@ -3,9 +3,9 @@ import React from "react";
 const LocationInfo = ({ location }) => {
   // console.log(location);
   return (
-    <article>
-      <h2>{location?.name}</h2>
-      <ul>
+    <article className="location-container">
+      <h2 className="location_title">{location?.name}</h2>
+      <ul className="location-list">
         <li>
           <span> Type: {location?.type}</span>
         </li>
