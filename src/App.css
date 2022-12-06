@@ -62,16 +62,6 @@ h2{
   animation:  opacity 3.8s normal linear;
 }
 
-@keyframes rotate {
-  to{rotate: 359deg;}  
-}
-
-@keyframes opacity {
-  0%{ opacity: 1;}
-  90%{ opacity: 1;}
-  100%{ opacity: 0;}
-}
-
 .none{
   display: none;
 }
@@ -180,7 +170,7 @@ h2{
 
   text-align: center;
 
-  height: 20vh;
+  min-height: 20vh;
   width: 70%;
   margin: 2rem auto 1rem auto;
 
@@ -199,7 +189,6 @@ h2{
   display: flex;
   justify-content: space-around;
 }
-
 
 .location-residents {
   padding: 1rem 15vw;
@@ -278,15 +267,16 @@ h2{
 }
 
 .loader-card_body h2,.loader-card_body li{
-  background-color: #7e7e7e;
-  color: #7e7e7e;
+  background-color: var(--back-color-primary);
+  color: var(--back-color-primary);
   margin-bottom: 1rem;
   width: 100%;
 }
 
-.loader-card_body li{
+.loader-card_body li, .loader-card_body h2{
   width: 80%;
   margin: .25rem;
+  opacity: .4;
 }
 
 .error{
@@ -299,7 +289,7 @@ h2{
   top: 50%;
   right: 50%;
   transform: translateX(50%) translateY(50%);
-  background-color: red;
+  background-color: var(--danger);
   padding: 15px 15px ;
   /* animation: 0.5s ease-in showError; */
   z-index: 999;
@@ -309,8 +299,9 @@ h2{
 }
 
 .error p {
-  margin: 0;
   text-align: center;
+  margin: 0;
+  width: 100%;
 }
 
 .error .close{
@@ -321,18 +312,6 @@ h2{
   background-color: #33333388;
   border-radius: 50%;
   cursor: pointer;
-}
-
-@keyframes showError {
-  0%{
-    transform: scale(1.1) translateX(50%) translateY(50%);    
-  }
-  50%{
-    transform: scale(1.25) translateX(50%) translateY(50%);
-  }
-  100%{
-    transform: scale(1.5) translateX(50%) translateY(50%);
-  }
 }
 
 .modal{
@@ -364,6 +343,28 @@ h2{
   bottom: 120px;
 }
 
+@keyframes rotate {
+  to{rotate: 359deg;}  
+}
+
+@keyframes opacity {
+  0%{ opacity: 1;}
+  90%{ opacity: 1;}
+  100%{ opacity: 0;}
+}
+
+@keyframes showError {
+  0%{
+    transform: scale(1.1) translateX(50%) translateY(50%);    
+  }
+  50%{
+    transform: scale(1.25) translateX(50%) translateY(50%);
+  }
+  100%{
+    transform: scale(1.5) translateX(50%) translateY(50%);
+  }
+}
+
 @media (max-width: 700px){
   .navbar{
     display: flex;
@@ -390,6 +391,18 @@ h2{
     width: 60%;
     max-height: 75vh;
     z-index: -1;
+  }
+
+  .location-info{
+    padding: 0 2rem;
+  }
+
+  .location-info_list{
+
+    padding-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   .location-residents {
