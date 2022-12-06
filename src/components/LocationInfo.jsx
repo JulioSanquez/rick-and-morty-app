@@ -1,16 +1,15 @@
 import React from "react";
 
 const LocationInfo = ({ location }) => {
-  // console.log(location);
   return (
-    <article className="location-container">
-      <h2 className="location_title">{location?.name}</h2>
-      <ul className="location-list">
+    <article className="location-info">
+      <h2 className="location-info_title">{location ?.name}</h2>
+      <ul className="location-info_list">
         <li>
-          <span> Type: {location?.type}</span>
+          <span> <h2>Type</h2> {location?.type}</span>
         </li>
-        <li>Dimension: {location?.dimension}</li>
-        <li>Population: {location?.residents.length}</li>
+        <li> <h2>Dimension</h2> {location?.dimension}</li>
+        <li><h2>Population</h2>{location?.residents.length}</li>
       </ul>
     </article>
   );

@@ -9,7 +9,7 @@ export const ResidentList = ({ location, setModalResident }) => {
         <ResidentCard key={urlResident} urlResident={urlResident} setModalResident={setModalResident} />
       ))}
     </section>
-    <MenuPaginas location={location} />
+    {/* <MenuPaginas location={location} /> */}
   </>
   );
 };

@@ -6,10 +6,20 @@
   scroll-behavior: smooth;
 }
 
+:root{
+  --primary-color: #4ab648;
+  --second-color: #208D45;
+  --third-color: #A7CB54;
+  --text-color: #F0F2EB;
+  --back-color-primary: #0D0D0D;
+  --back-color: #222;
+  --danger:#dd0000;
+}
+
 html {
-  background-color: #05292e;
-  background-color: linear-gradient(#05292e 0%, #0d6570 50%, #178b9b) 100%;
   overflow-x: hidden;
+  background: linear-gradient(90deg,#111111EE 0%, #222 100%);
+  color: var(--text-color);
 }
 
 img{
@@ -19,6 +29,10 @@ img{
 
 li{
   list-style: none;
+}
+
+h2{
+  color: var(--second-color);
 }
 
 .portada{
@@ -33,7 +47,6 @@ li{
   position: fixed;
   top: 1%;
   left: 1%;
-  /* transform: translateY(-50%) translateX(-50%) scaleX(150%); */
   width: 100%;
   height: 100%;
   animation:  rotate 3s infinite linear,
@@ -59,18 +72,6 @@ li{
   100%{ opacity: 0;}
 }
 
-@keyframes scale2 {
-  to{transform: s;}
-}
-
-.portada-down{
-  background-color: #05292e;
-  width: 100;
-  height: 10vh;
-  position: absolute;
-  bottom: 0;
-}
-
 .none{
   display: none;
 }
@@ -80,13 +81,11 @@ li{
   position: sticky;
   top: 0;
   z-index: 99;
-  background-color: #05292e;
 }
 
 
 .navbar {
-  background-color: black;
-  color: white;
+  background-color: var(--back-color-primary);
   padding: 10px 2rem;
 
   display: flex;
@@ -115,8 +114,9 @@ li{
 
 .navbar-filter{
   padding: 0.25rem 0;
-  color: #05292e;
-  background-color: white;
+  color: var(--second-color);
+  background-color: var(--back-color);
+  border: 2px solid var(--text-color);
   cursor: pointer;
   font-size: 1.25rem;
   position: absolute;
@@ -126,15 +126,17 @@ li{
   max-height: 85vh;
   overflow-y: scroll;
   z-index: -1;
+  opacity: .95;
 }
 
 .navbar-filter li{
   padding-top: .5rem ;
   padding-left: 1rem;
+  background-color: var(--back-color);
 }
 
 .navbar-filter li:hover {
-  background-color: #05292e88;
+  background-color: var(--text-color);
   width: 100%;
 }
 
@@ -144,19 +146,58 @@ li{
   padding:.5rem;
   font-size: 1.5rem;
   border-radius:25px 0 0 25px;
+  background-color: var(--back-color);
+  color: var(--second-color);
+}
+
+.navbar-input:focus{
+  border: 3px solid var(--second-color);
+  box-shadow: 0 0 20px var(--primary-color);
 }
 
 .navbar-button{
-  background-color: #fff;
+  background-color: var(--back-color);
+  color: var(--text-color);
   width: 20%;
   height: 3rem;
   transform: translateY(2px);
   border-radius: 0 25px 25px 0;
+  
 }
 
 .navbar-button:hover{
-  background-color: #dddddd44;
-  border-radius: 0 25px 25px 0;
+  border: 3px solid var(--second-color);
+  box-shadow: 0 0 20px var(--primary-color);
+  cursor: pointer;
+}
+
+.location-info{
+  background-color: var(--back-color);
+
+  border: 3px solid var(--second-color);
+  box-shadow: 0 0 20px var(--primary-color);
+  color: var(--text-color);
+
+  text-align: center;
+
+  height: 20vh;
+  width: 70%;
+  margin: 2rem auto 1rem auto;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+}
+
+.location-info_title{
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+.location-info_list{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
 
@@ -169,9 +210,10 @@ li{
 }
 
 .resident-card {
-  background-color: #062226;
-  color: white;
-  padding: .5rem;
+  background-color: #222;
+  border: 3px solid var(--second-color);
+  box-shadow: 0 0 20px var(--primary-color);
+  color: var(--text-color);
 }
 
 .resident-card_header {
@@ -192,8 +234,7 @@ li{
 }
 
 .resident-card:hover {
-  background-color: #075561;
-  color: white;
+  background-color: var(--back-color-primary);
   cursor: pointer;
 }
 
@@ -205,7 +246,7 @@ li{
 }
 
 .circle.alive{
-  background-color: #4ab648;
+  background-color: var(--second-color);
 }
 
 .circle.dead{
@@ -300,38 +341,27 @@ li{
   height: 100%;
 }
 
-.scroll-up{
+.scroll-up, .refresh{
   position: fixed;
   bottom: 50px;
   right: 50px;
 
   width: 50px;
   height: 50px;
+  background-color: #222;
   border: 1px solid white;
   border-radius: 10px;
+  color: #eee;
 }
 
-.scroll-up:hover{
-  background-color: #075561;
-  color: white;
+.scroll-up:hover, .refresh:hover{
+  border: 3px solid var(--second-color);
+  box-shadow: 0 0 20px var(--primary-color);
   cursor: pointer;
 }
 
 .refresh{
-  position: fixed;
   bottom: 120px;
-  right: 50px;
-
-  width: 50px;
-  height: 50px;
-  border: 1px solid white;
-  border-radius: 10px;
-}
-
-.refresh:hover{
-  background-color: #075561;
-  color: white;
-  cursor: pointer;
 }
 
 @media (max-width: 700px){
