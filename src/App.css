@@ -35,6 +35,8 @@ h2{
   color: var(--second-color);
 }
 
+/* Application styles */
+
 .portada{
   height: 100vh;
   width: 100vw;
@@ -110,7 +112,7 @@ h2{
   cursor: pointer;
   font-size: 1.25rem;
   position: absolute;
-  top: 40px;
+  top: 38px;
   right: 8%;
   width: 29%;
   max-height: 85vh;
@@ -120,9 +122,12 @@ h2{
 }
 
 .navbar-filter li{
-  padding-top: .5rem ;
-  padding-left: 1rem;
+  padding: .5rem .5rem .5rem 1.5rem;
   background-color: var(--back-color);
+}
+
+.navbar-filter li:first-child{
+  padding-top: 1.5rem ;
 }
 
 .navbar-filter li:hover {
@@ -165,7 +170,7 @@ h2{
   background-color: var(--back-color);
 
   border: 3px solid var(--second-color);
-  box-shadow: 0 0 20px var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
   color: var(--text-color);
 
   text-align: center;
@@ -177,6 +182,12 @@ h2{
   display: flex;
   flex-flow: column;
   justify-content: space-around;
+}
+
+.location-info:hover{
+  background-color: var(--back-color-primary);
+  border: 3px solid var(--second-color);
+  box-shadow: 0 12px 40px var(--primary-color);
 }
 
 .location-info_title{
@@ -201,7 +212,7 @@ h2{
 .resident-card {
   background-color: #222;
   border: 3px solid var(--second-color);
-  box-shadow: 0 0 20px var(--primary-color);
+  box-shadow: 0 0 10px var(--primary-color);
   color: var(--text-color);
 }
 
@@ -224,6 +235,7 @@ h2{
 
 .resident-card:hover {
   background-color: var(--back-color-primary);
+  box-shadow: 0 0 40px var(--primary-color);
   cursor: pointer;
 }
 
@@ -266,6 +278,35 @@ h2{
   color: #7e7e7e;
 }
 
+.list-pages{
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.list-item{
+  background-color: var(--back-color);
+  border: 2px solid var(--text-color);  
+  width: 35px;
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+}
+
+.list-item:hover{
+  border: 3px solid var(--second-color);
+  box-shadow: 0 0 20px var(--primary-color);
+  cursor: pointer;
+}
+
+.active{
+  border: 3px solid var(--second-color);
+  box-shadow: 0 0 20px var(--primary-color);
+}
+
 .loader-card_body h2,.loader-card_body li{
   background-color: var(--back-color-primary);
   color: var(--back-color-primary);
@@ -286,12 +327,11 @@ h2{
   width: 50vw;
   border-radius: 10px;
   position: absolute;
-  top: 50%;
-  right: 50%;
+  top: 50vh;
+  right: 50vw;
   transform: translateX(50%) translateY(50%);
   background-color: var(--danger);
   padding: 15px 15px ;
-  /* animation: 0.5s ease-in showError; */
   z-index: 999;
 
   display: flex;
@@ -351,18 +391,6 @@ h2{
   0%{ opacity: 1;}
   90%{ opacity: 1;}
   100%{ opacity: 0;}
-}
-
-@keyframes showError {
-  0%{
-    transform: scale(1.1) translateX(50%) translateY(50%);    
-  }
-  50%{
-    transform: scale(1.25) translateX(50%) translateY(50%);
-  }
-  100%{
-    transform: scale(1.5) translateX(50%) translateY(50%);
-  }
 }
 
 @media (max-width: 700px){

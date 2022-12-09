@@ -6,8 +6,9 @@ import Navbar from "./components/Navbar";
 import ResidentList from "./components/ResidentList";
 import LocationInfo from "./components/LocationInfo";
 import ErrorMessage from "./components/ErrorMessage";
-import MenuPaginas from "./components/MenuPaginas";
 import ModalResident from "./components/ModalResident";
+
+const RESIDENT_LENGTH = 15
 
 function App() {
   const [location, setLocation] = useState();
@@ -16,6 +17,10 @@ function App() {
   const [showError, setShowError] = useState(false)
   const [load, setLoad] = useState(false)
   const [load2, setLoad2] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [lastPage, setLastPage] = useState(1)
+  const [residentsFilter, setResidentsFilter] = useState([])
+
   const [change, setChange] = useState(false)
 
   setTimeout(()=> setLoad(true), 6000)
@@ -67,6 +72,36 @@ function App() {
     searchRandomDimension()
   }, [change]);
 
+  const getAllPages = () =>{
+    const arrayPages = []
+    for (let i = 1; i < lastPage + 1; i++) {
+      arrayPages.push(i)
+    }
+    return arrayPages
+  }
+  
+
+  useEffect(() => {
+    if(!location) return
+
+    const quantityResidents = location.residents.length
+    const quantityPages = Math.ceil(quantityResidents / RESIDENT_LENGTH)
+    setLastPage(quantityPages)
+    setCurrentPage(1)
+  }, [location])
+
+  useEffect(() => {
+    const lastResidentCut = currentPage * RESIDENT_LENGTH
+    const firstResidentCut = lastResidentCut - RESIDENT_LENGTH
+
+    const newResidentsFilter = location?.residents.slice(firstResidentCut, lastResidentCut)
+    setResidentsFilter(newResidentsFilter)
+
+    window.scrollTo(0,0)
+  }, [currentPage, location])
+  
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const dimensionSearch = e.target.searchValue.value;
@@ -104,7 +139,31 @@ function App() {
           getNewLocation={getNewLocation}  
         />
         <LocationInfo location={location} />
-        <ResidentList location={location} setModalResident={setModalResident} />
+        <ul className="list-pages">
+          {
+            getAllPages().map( (page) => (
+              <li 
+                onClick={() => setCurrentPage(page)} 
+                className={ (currentPage === page) ? "list-item active" : "list-item"} 
+                key={page}> {page} 
+                 </li>
+              
+            ))
+          }
+        </ul>
+        <ResidentList residentsFilter={residentsFilter} setModalResident={setModalResident} />
+        <ul className="list-pages">
+          {
+            getAllPages().map( (page) => (
+              <li 
+                onClick={() => setCurrentPage(page)} 
+                className={ (currentPage === page) ? "list-item active" : "list-item"} 
+                key={page}> {page} 
+                 </li>
+              
+            ))
+          }
+        </ul>
         {
           modalResident && <ModalResident modalResident={modalResident} />
         }
